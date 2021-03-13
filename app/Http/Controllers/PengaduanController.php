@@ -50,7 +50,7 @@ class PengaduanController extends Controller
         }
 
         $pengaduan->save();
-        return redirect()->route('index.masyarakat');
+        return redirect()->route('index.masyarakat')->with('blabla','Berhasil Menambah Data');
     }
 
 

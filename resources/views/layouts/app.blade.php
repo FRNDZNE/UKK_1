@@ -87,5 +87,28 @@
             @yield('content')
         </main>
     </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+    <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+    @if (Session::has('success'))
+    <script>
+        Swal.fire({
+        title: 'Success',
+        text: '{{Session::get('success')}}',
+        icon: 'success',
+        confirmButtonText: 'OK'
+        })
+    </script>
+    @elseif(Session::has('blabla'))
+    <script>
+        Swal.fire({
+        title: 'Bla Blas',
+        text: '{{Session::get('blabla')}}',
+        icon: 'info',
+        confirmButtonText: 'OK'
+        })
+    </script>
+    @endif
+
 </body>
 </html>
