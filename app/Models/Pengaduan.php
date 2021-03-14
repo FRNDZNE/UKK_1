@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Pengaduan extends Model
 {
@@ -21,4 +22,10 @@ class Pengaduan extends Model
     {
         return $this->hasOne('App\Models\Tanggapan');
     }
+
+    public function getTanggalAttribute()
+    {
+        return Carbon::parse($this->attributes['tanggal'])->translatedFormat('l, d F Y');
+    }
+
 }

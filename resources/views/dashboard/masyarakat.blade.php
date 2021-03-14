@@ -13,7 +13,7 @@
         @foreach ($data['pengaduan'] as $key => $pengaduan)
             <tr>
                 <td scope="row">{{ $key + 1 }}</td>
-                <td>{{ date('d, F Y', strtotime($pengaduan->tanggal)) }}</td>
+                <td>{{ $pengaduan->tanggal}}</td>
                 <td>
                     @if ($pengaduan->status == 'dikirim')
                         <span class="badge bg-danger">Belum Ditanggapi</span>
@@ -32,8 +32,6 @@
                             Batalkan
                         </button>
                     @else
-                        <button disabled="disabled" class="btn btn-warning btn-sm">Edit</button>
-                        <button disabled="disabled" class="btn btn-danger btn-sm">Batalkan</button>
                     @endif
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
@@ -83,9 +81,9 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     @if (isset($pengaduan->tanggapan->isi_tanggapan))
-                                        <textarea name="" disabled id="" cols="30" rows="10" class="form-control">{{$pengaduan->tanggapan->isi_tanggapan}}</textarea>
+                                        <p>{{$pengaduan->tanggapan->isi_tanggapan}}</p>
                                     @else
-                                        <textarea name="" disabled id="" cols="30" rows="10" class="form-control">Tidak Ada Tanggapan</textarea>
+                                        <p>Tidak Ada Tanggapan</p>
                                     @endif
                                 </div>
                                 <div class="col-md-6">

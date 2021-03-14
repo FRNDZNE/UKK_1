@@ -29,9 +29,9 @@ Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', function () {
     if (Auth::user()->hasRole(['admin', 'petugas'])) {
-        return redirect()->route('index.petugas');
+        return redirect()->route('index.petugas')->with('success' ,'Selamat Datang ' .Auth::user()->name);
     } else {
-        return redirect()->route('index.masyarakat');
+        return redirect()->route('index.masyarakat')->with('success' , 'Selamat Datang '.Auth::user()->name);
     }
 });
 
@@ -65,6 +65,9 @@ Route::middleware(['auth', 'role:masyarakat'])->prefix('masyarakat')->group(func
     Route::get('/edit-pengaduan/{id}', [App\Http\Controllers\PengaduanController::class, 'edit'])->name('edit.pengaduan');
     Route::post('/update-pengaduan/{id}', [App\Http\Controllers\PengaduanController::class, 'update'])->name('update.pengaduan');
     Route::post('/destroy-pengaduan/{id}', [App\Http\Controllers\PengaduanController::class, 'destroy'])->name('destroy.pengaduan');
+
+    Route::get('/profil', [App\Http\Controllers\UserController::class, 'profil_masyarakat'])->name('profil.masyarakat');
+    Route::post('/profil/update', [App\Http\Controllers\UserController::class, 'update_profil'])->name('profil.update');
 });
 
 

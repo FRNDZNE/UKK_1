@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Hash;
+use Auth;
 
 class UserController extends Controller
 {
@@ -61,6 +62,33 @@ class UserController extends Controller
     {
         User::find($id)->delete();
         return back();
+    }
+
+    public function profil_masyarakat()
+    {
+        $data = User::where('id', Auth::id())->first();
+        return view('user.masyarakat', compact('data'));
+    }
+
+    public function update_profil(Request $req)
+    {
+        $user = User::find($req->id);
+
+        $user->nik = $req->nik;
+        $user->name = $req->name;
+        $user->username = $req->username;
+        if ($req->password != null ) {
+            $user->password = bcrypt($req->password);
+
+            // return 'password diubah';
+        }else {
+            unset($user->password);
+            // return 'password tetap gan';
+        }
+        $user->telp = $req->telp;
+        $user->save();
+        return back()->with('success','Berhasil Mengubah Data');
+
     }
 
 }

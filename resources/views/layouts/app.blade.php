@@ -42,6 +42,14 @@
                             <a href="{{route('petugas.index')}}" class="nav-link @yield('active_petugas')">Data Petugas</a>
                         </li>
                         @endrole
+                        @role('masyarakat')
+                        <li class="nav-item">
+                            <a href="{{url('home')}}" class="nav-link @yield('active_dashboard')">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('profil.masyarakat')}}" class="nav-link @yield('active_masyarakat')">Profil</a>
+                        </li>
+                        @endrole
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -99,16 +107,23 @@
         confirmButtonText: 'OK'
         })
     </script>
-    @elseif(Session::has('blabla'))
+    @elseif(Session::has('error'))
     <script>
         Swal.fire({
-        title: 'Bla Blas',
-        text: '{{Session::get('blabla')}}',
-        icon: 'info',
+        title: 'Error',
+        text: '{{Session::get('error')}}',
+        icon: 'error',
         confirmButtonText: 'OK'
         })
     </script>
     @endif
-
+    {{-- Data Table --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.24/datatables.min.css"/>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.24/datatables.min.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('.table').DataTable();
+        } );
+    </script>
 </body>
 </html>

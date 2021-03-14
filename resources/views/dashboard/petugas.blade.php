@@ -29,14 +29,14 @@
                 </form>
                 <td>
                     @if ($pengaduan->status == 'proses')
-                        <button disabled="disabled" class="btn btn-warning btn-sm">Proses</button>
+                        {{-- <button disabled="disabled" class="btn btn-warning btn-sm">Proses</button> --}}
                         <a onclick="document.getElementById('selesai-{{$pengaduan->id}}').submit();" class="btn btn-success btn-sm">Selesai</a>
                     @elseif($pengaduan->status == 'selesai')
-                        <button disabled="disabled" class="btn btn-warning btn-sm">Proses</button>
-                        <button disabled="disabled" class="btn btn-success btn-sm">Selesai</button>
+                        {{-- <button disabled="disabled" class="btn btn-warning btn-sm">Proses</button> --}}
+                        {{-- <button disabled="disabled" class="btn btn-success btn-sm">Selesai</button> --}}
                     @else
                         <a onclick="document.getElementById('proses-{{$pengaduan->id}}').submit();" class="btn btn-warning btn-sm">Proses</a>
-                        <button disabled="disabled" class="btn btn-success btn-sm">Selesai</button>
+                        {{-- <button disabled="disabled" class="btn btn-success btn-sm">Selesai</button> --}}
                     @endif
                     <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
                         data-target="#detail-{{ $pengaduan->id }}">

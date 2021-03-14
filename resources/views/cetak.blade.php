@@ -47,7 +47,7 @@
             {{-- Tanggal Ditanggapi --}}
             <td>Pada Tanggal</td>
             <td>:</td>
-            <td>{{date('d, F Y', strtotime($pengaduan->tanggapan->tanggal))}}</td>
+            <td>{{$pengaduan->tanggapan->tanggal}}</td>
         </tr>
         <tr>
             <td>No Telepon</td>
@@ -57,7 +57,7 @@
         <tr>
             <td>Tanggal Pengaduan</td>
             <td>:</td>
-            <td>{{date('d, F Y', strtotime($pengaduan->tanggal))}}</td>
+            <td>{{$pengaduan->tanggal}}</td>
         </tr>
     </table>
     <div class="foto">
