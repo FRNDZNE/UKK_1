@@ -57,25 +57,31 @@
                                     <p class="font-weight-bold">Isi Laporan</p>
                                 </div>
                                 <div class="col-md-6">
-                                    <p class="font-weight-bold">Foto</p>
+                                    @if (isset($pengaduan->tanggapan->user->name))
+                                        <p class="font-weight-bold">Ditanggapi Oleh : {{$pengaduan->tanggapan->user->name}}</p>
+                                    @else
+                                        <p class="font-weight-bold">Ditanggapi Oleh : -</p>
+                                    @endif
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <p>{{ $pengaduan->isi_laporan }}</p>
                                 </div>
-                                {{-- <div class="col-md-6">
-                                    <img class="img-fluid" style="width: 20%" src="{{ asset($pengaduan->foto) }}"
-                                        alt="Foto Tidak Ada Atau Rusak">
-                                </div> --}}
+                                <div class="col-md-6">
+                                    @if (isset($pengaduan->tanggapan->tanggal))
+                                        <p class="font-weight-bold">Pada Tanggal : {{$pengaduan->tanggapan->tanggal}}</p>
+                                    @else
+                                        <p class="font-weight-bold">Pada Tanggal : -</p>
+                                    @endif
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    @if (isset($pengaduan->tanggapan->isi_tanggapan))
-                                        <p class="font-weight-bold">Tanggapan <span class="float-right"> Ditanggapi Oleh : {{$pengaduan->tanggapan->user->name}}</span></p>
-                                    @else
-                                        <p class="font-weight-bold">Tanggapan <span class="float-right"> Ditanggapi Oleh : -</span></p>
-                                    @endif
+                                    <p class="font-weight-bold">Tanggapan</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="font-weight-bold">Foto</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -88,7 +94,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     @if (isset($pengaduan->foto))
-                                        <img class="img-fluid" src="{{ asset($pengaduan->foto) }}" alt="">
+                                        <img class="img-fluid" style="height: 50vh;width:auto;" src="{{ asset($pengaduan->foto) }}" alt="">
                                     @else
                                         <p>Foto Tidak Ada</p>
                                     @endif

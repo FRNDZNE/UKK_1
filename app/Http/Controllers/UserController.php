@@ -23,7 +23,7 @@ class UserController extends Controller
         $user = User::create($data);
 
         $user->attachRole('petugas');
-        return back();
+        return back()->with('success','Berhasil Menambah Data');
     }
 
     public function update_petugas(Request $req)
@@ -55,7 +55,7 @@ class UserController extends Controller
         }
         $user->telp = $req->telp;
         $user->save();
-        return back();
+        return back()->with('success','Berhasil Mengubah Data');
     }
 
     public function destroy_petugas($id)
